@@ -115,7 +115,7 @@ def save_violation(evidence_data: Dict[str, Any]) -> Dict[str, Any]:
 
     # Insert violation record
     cursor.execute("""
-        INSERT INTO violations (
+        INSERT OR REPLACE INTO violations (
             evidence_id, track_id, camera_id, plate_number, 
             violation_type, fine_amount, is_repeat_offender, payment_status, timestamp
         ) VALUES (?, ?, ?, ?, ?, ?, ?, 'PENDING', ?)
